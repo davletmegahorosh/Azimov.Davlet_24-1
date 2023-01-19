@@ -8,3 +8,8 @@ class Product(models.Model):
     extra_inf = models.TextField()
     price = models.IntegerField()
     post_date = models.DateTimeField(auto_now_add =True)
+
+class Comment(models.Model):
+    text = models.TextField()
+    created_date = models.DateField(auto_now_add =True)
+    post = models.ForeignKey(Product, on_delete=models.CASCADE)

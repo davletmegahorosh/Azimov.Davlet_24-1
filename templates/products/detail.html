@@ -1,0 +1,36 @@
+{% extends 'Layouts/index.html' %}
+{% block content %}
+    <style type="text/css">
+        .product{
+            width:80%;
+            margin-left: 10%;
+        }
+        .dates{
+            display: flex;
+            justify-content: space-between;
+        }
+        .comments{
+            background:#242b2e;
+            color:#fff;
+            padding: 10px;
+            margin-bottom: 20px;
+        }
+    </style>
+    <div class="product">
+        <h1>{{ post.title }}</h1>
+        <h4>{{ product.extra_inf }}</h4>
+        <div class = dates>
+            <h5>{{ product.post_date }}</h5>
+            <h5>{{ product.price }}</h5>
+        </div>
+        <div class="comments">
+            {% for comment in comments %}
+                <div class="comment">
+                    <h6>{{ comment.text }}</h6>
+                    <p>{{ comment.created_date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}

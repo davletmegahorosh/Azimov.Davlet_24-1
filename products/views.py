@@ -1,5 +1,6 @@
+
 from django.shortcuts import render,HttpResponse
-from products.models import Product
+from products.models import Product, Comment
 
 # Create your views here.
 
@@ -17,6 +18,12 @@ def product_view(request):
         }
         return render(request, 'products/products.html', context = context)
 
-def queen(request):
+def product_detail_view(request,id):
     if request.method =='GET':
-        return HttpResponse("You are cool, if you would like to buy mc'queen")
+        product_obj = Product.objects.get(id=id)
+        comments = Comment.objects.filter(post=product_obj)
+        context={
+            'product' : product_obj,
+            'comments' : comments
+        }
+        return render(request, 'products/detail.html',context = context)
