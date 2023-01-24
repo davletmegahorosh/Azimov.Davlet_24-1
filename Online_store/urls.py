@@ -23,3 +23,4 @@ urlpatterns = [
     path('products/', product_view),
     path('products/<int:id>', product_detail_view)
 ]
+urlpatterns += static(MEDIA_URL, document_root=MEDIA_ROOT)
