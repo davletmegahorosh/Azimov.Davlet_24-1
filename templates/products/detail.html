@@ -14,6 +14,7 @@
             color:#fff;
             padding: 10px;
             margin-bottom: 20px;
+            justify-content: space-between;
         }
     </style>
     <div class="product">
@@ -23,6 +24,13 @@
         <div class = dates>
             <h5>{{ product.post_date }}</h5>
             <h5>{{ product.price }}</h5>
+        </div>
+        <div class="create_comment">
+            <form action="/products/{{ product.id }}/" method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <input type="submit" value="Add comment">
+            </form>
         </div>
         <div class="comments">
             {% for comment in comments %}
